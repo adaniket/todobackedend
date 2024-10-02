@@ -71,7 +71,6 @@ class userController {
       }
       const findUser = await User.findOne({ email });
       if (!findUser) {
-        console.log("first",)
         return res.status(statusCodes.error).json({
           status: "error",
           message: "User not found please register first!",

@@ -42,7 +42,6 @@ class taskController {
       });
 
       const save = await newTask.save();
-      console.log(save);
       return res
         .status(statusCodes.success)
         .json({ status: "success", message: "New task list added!" });
@@ -134,7 +133,6 @@ class taskController {
           .json({ status: "error", message: "List is not present!" });
       }
       // Find the specific task to update
-      console.log("first");
       const findTask = findList.taskList.id(taskId);
       if (!findTask) {
         return res.status(statusCodes.error).json({
@@ -142,7 +140,7 @@ class taskController {
           message: "This task is not present or deleted!",
         });
       }
-      console.log("second");
+
       // Update the task status
       findTask.status = status;
       // Save the updated list
@@ -207,7 +205,7 @@ class taskController {
 
   static deleteList = async (req, res) => {
     try {
-      const { listId } = req.body;
+      const { listId,userId } = req.body;
 
       if (!listId) {
         return res.status(statusCodes.error).json({
@@ -223,8 +221,10 @@ class taskController {
           .status(statusCodes.notFound) // Status code for not found
           .json({ status: "error", message: "List not found!" });
       }
-      const newUpdateList = await Task.find()
+      console.log(userId)
+      const newUpdateList = await Task.find({userId:userId})
 
+      console.log(newUpdateList)
       return res
         .status(statusCodes.success) // Status code for success
         .json({

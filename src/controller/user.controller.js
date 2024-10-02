@@ -76,7 +76,6 @@ class userController {
           message: "User not found please register first!",
         });
       }
-      console.log("run")
       const isMatch = await bcrypt.compare(password, findUser.password);
       if (!isMatch) {
         return res

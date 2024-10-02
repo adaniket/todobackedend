@@ -1,9 +1,9 @@
 import express from "express"
 import cors from "cors"
 import "dotenv/config.js"
-import dbConnection from "./src/config/dbConfig.js"
-import userRoutes from "./src/routes/user.routes.js"
-import TaskRoutes from "./src/routes/task.routes.js"
+import dbConnection from "./config/dbConfig.js"
+import userRoutes from "./routes/user.routes.js"
+import TaskRoutes from "./routes/task.routes.js"
 
 
 const startServer = async()=>{
